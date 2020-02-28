@@ -1,17 +1,28 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="banner">
+      <h1>pic.</h1>
+    </div>
+    <image-grid :images="images"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ImageGrid from './components/ImageGrid.vue'
 
 export default {
-  name: 'App',
+  data(){
+    return {
+      images: []
+    }
+  },
   components: {
-    HelloWorld
+    'image-grid': ImageGrid
+  },
+  mounted(){
+    fetch('https://picsum.photos/v2/list')
+    .then(response => response.json())
+    .then(data => this.images = data)
   }
 }
 </script>
@@ -19,10 +30,21 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  width: 100%;
 }
+
+h1 {
+  font-size: 5rem;
+  padding: 1em 0em;
+  color: white;
+}
+
+.banner {
+  background: rgb(247,255,0);
+  background: linear-gradient(90deg, rgba(247,255,0,1) 0%, rgba(219,54,164,1) 100%);
+  top: 0;
+  left: 0;
+}
+
+
 </style>

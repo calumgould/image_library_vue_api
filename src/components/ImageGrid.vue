@@ -34,4 +34,10 @@ export default {
     }
   }
 
+  @media only screen and (max-width: 700px) {
+    .image-grid {
+      column-count: 1;
+    }
+  }
+
 </style>

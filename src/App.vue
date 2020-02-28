@@ -3,7 +3,7 @@
 
     <div class="banner">
       <div class="header">
-        <h1 data-hover="Spend.">pic.</h1>
+        <h1 data-hover="OnTrack.">imgSpend<span>.</span></h1>
       </div>
     </div>
     <div class="image-grid">
@@ -13,7 +13,7 @@
       <image-grid :images="images" />
     </div>
     <div class="footer">
-      <img src="/images/Unsplash_Symbol.png" alt="Unsplash logo">
+      <a href="https://unsplash.com/" target="_blank"><img src="/images/Unsplash_Logo_Full.png" alt="Unsplash logo"></a>
     </div>
   </div>
 </template>
@@ -58,6 +58,11 @@ h1 {
   color: white;
   text-align: center;
   margin: 0 30%;
+  font-family: 'Nunito'
+}
+
+h1 span {
+  color: rgba(247,255,0,1);
 }
 
 .header {
@@ -132,6 +137,15 @@ h1 {
   bottom: 0;
   left: 0;
   width: 100%;
+}
+
+.footer img {
+  margin: 0 30%;
+  width: 10em;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3em 0 2em 0;
 }
 
 

@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="image-grid">
-    <image-item v-for="image in images" :image="image"/>
+    <image-item v-for="(image, index) in images" :image="image" :key="index"/>
   </div>
 </template>
 

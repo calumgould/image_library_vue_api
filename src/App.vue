@@ -2,7 +2,7 @@
   <div id="app">
     <div class="banner">
       <div class="header">
-        <h1 data-hover="Spend">pic.</h1>
+        <h1 data-hover="Spend.">pic.</h1>
       </div>
     </div>
     <image-grid :images="images"/>
@@ -10,21 +10,29 @@
 </template>
 
 <script>
+import {eventBus} from './main.js'
 import ImageGrid from './components/ImageGrid.vue'
+import ImageDetail from './components/ImageDetail.vue'
 
 export default {
   data(){
     return {
-      images: []
+      images: [],
+      selectedImage: null
     }
   },
   components: {
-    'image-grid': ImageGrid
+    'image-grid': ImageGrid,
+    'image-detail': ImageDetail
   },
   mounted(){
     fetch('https://picsum.photos/v2/list')
     .then(response => response.json())
     .then(data => this.images = data)
+
+    eventBus.$on('image-selected', (image) => {
+      this.selectedImage = image
+    })
   }
 }
 </script>

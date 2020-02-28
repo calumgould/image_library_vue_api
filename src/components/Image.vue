@@ -1,13 +1,19 @@
 <template lang="html">
   <div class="image">
-    <img :src="image.download_url">
+    <img :src="image.download_url" @mouseover="handleHover">
   </div>
 </template>
 
 <script>
+import {eventBus} from '../main.js'
 export default {
   name: 'image-item',
-  props: ['image']
+  props: ['image'],
+  methods: {
+    handleHover(){
+      eventBus.$emit('image-selected', this.image)
+    }
+  }
 }
 </script>
 
@@ -18,11 +24,13 @@ export default {
     margin-bottom: 1em;
     transition: 0.2s;
     transform-origin: top center;
+
   }
 
   .image:hover {
     transform: scale(1.5);
     z-index: 1;
+    cursor: crosshair;
   }
 
   .image img {

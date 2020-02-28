@@ -20,11 +20,18 @@ export default {
 
   .image-grid {
     justify-content: center;
-    column-count: 4;
+    column-count: 3;
     line-height: 0;
     column-gap: 1em;
     text-align: center;
-    margin: 4em 10em;
+    margin: 2em 10%;
+    padding-bottom: 10%;
+  }
+
+  @media only screen and (max-width: 1000px) {
+    .image-grid {
+      column-count: 2;
+    }
   }
 
 </style>

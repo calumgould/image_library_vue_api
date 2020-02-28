@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="image">
-    <img :src="image.download_url" @mouseover="handleHover">
+    <img :src="image.download_url" @click="handleHover">
   </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
   .image:hover {
     transform: scale(1.5);
     z-index: 1;
-    cursor: crosshair;
+    cursor: pointer;
   }
 
   .image img {

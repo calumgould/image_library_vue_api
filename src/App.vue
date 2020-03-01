@@ -10,6 +10,9 @@
           <img src="/images/logo.png" alt="spend logo">
         </div>
     </div>
+    <div class="generate-images">
+      <button type="submit" @click="handlePageChange">Generate New Images</button>
+    </div>
     <div class="image-grid">
       <div class="detail-border">
         <image-detail v-show="selectedImage !== null" :image="selectedImage"/>
@@ -33,15 +36,17 @@ export default {
       images: [],
       selectedImage: null,
       scrollPosition: null,
-      opacity: 0
+      opacity: 0,
+      page: 2,
+      limit: 50
     }
   },
   components: {
     'image-grid': ImageGrid,
-    'image-detail': ImageDetail
+    'image-detail': ImageDetail,
   },
   mounted(){
-    fetch('https://picsum.photos/v2/list')
+    fetch(`https://picsum.photos/v2/list?page=${this.page}&limit=${this.amount}`)
     .then(response => response.json())
     .then(data => this.images = data)
 
@@ -58,6 +63,11 @@ export default {
     updateScroll() {
       this.scrollPosition = window.scrollY
       this.updateOpacity()
+    },
+    handlePageChange() {
+      this.page += 1
+      location.reload();
+      return false
     }
 
   }
@@ -154,7 +164,7 @@ h1 {
   padding-bottom: 0.5em;
 }
 
-.image-detail button {
+.image-detail button, .generate-images button {
   padding: 1em 2em;
   margin-top: 0.5em;
   border-radius: 2em;
@@ -163,7 +173,7 @@ h1 {
   border: 1px solid black;
 }
 
-.image-detail button:hover {
+.image-detail button:hover, .generate-images button:hover, .submit:hover {
   background: rgb(247,255,0);
   background: linear-gradient(90deg, rgba(247,255,0,1) 0%, rgba(219,54,164,1) 80%);
   border: 1px solid white;
@@ -171,7 +181,10 @@ h1 {
   cursor: pointer;
 }
 
-
+.generate-images button {
+  margin: 2em 1em 0 1em;
+  display: inline-block;
+}
 
 .detail-border {
   background: rgb(247,255,0);

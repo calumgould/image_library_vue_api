@@ -2,9 +2,13 @@
   <div id="app">
 
     <div class="banner">
-      <div class="header">
-        <h1 data-hover="OnTrack.">imgSpend<span>.</span></h1>
-      </div>
+      <div class="sneaky-boi"></div>
+      <div class="sneaky-reveal"></div>
+      <!-- <div :class="{sealHidden: scrollPosition < 150, sealVisible: scrollPosition > 150}"></div> -->
+      <div class="seal" :style="{'opacity': this.opacity}"></div>
+        <div class="header">
+          <img src="/images/logo.png" alt="spend logo">
+        </div>
     </div>
     <div class="image-grid">
       <div class="detail-border">
@@ -27,7 +31,9 @@ export default {
   data(){
     return {
       images: [],
-      selectedImage: null
+      selectedImage: null,
+      scrollPosition: null,
+      opacity: 0
     }
   },
   components: {
@@ -42,8 +48,22 @@ export default {
     eventBus.$on('image-selected', (image) => {
       this.selectedImage = image
     })
+
+    window.addEventListener('scroll', this.updateScroll)
+  },
+  methods: {
+    updateOpacity() {
+      this.opacity = this.scrollPosition/1000
+    },
+    updateScroll() {
+      this.scrollPosition = window.scrollY
+      this.updateOpacity()
+    }
+
   }
 }
+
+
 </script>
 
 <style>
@@ -61,26 +81,24 @@ h1 {
   font-family: 'Nunito'
 }
 
-h1 span {
-  color: rgba(247,255,0,1);
-}
-
 .header {
-  padding: 6em 0em
+  padding: 5% 0em;
 }
 
-.header h1:hover {
-  font-size: 0;
+
+.header img {
+  max-width: 25%;
+  z-index: 5;
 }
 
-.header h1:hover::after{
+/* .header h1:hover::after{
   content: attr(data-hover);
   font-family: 'Nunito';
   font-size: 6rem;
   padding: 1em 0em;
   color: white;
   text-align: center;
-}
+} */
 
 
 .banner {
@@ -89,6 +107,40 @@ h1 span {
   top: 0;
   left: 0;
   width: 100%;
+  height: 16.7%;
+  position: relative;
+  z-index: 1;
+}
+
+.sneaky-boi {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.sneaky-boi:hover ~ .sneaky-reveal {
+  opacity: 0.10;
+}
+
+.seal, .sealHidden, .sealVisible, .sneaky-reveal {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(/images/awkwardseal.gif) center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sealVisible {
+  opacity: 0.15;
 }
 
 .image-detail {
@@ -109,7 +161,6 @@ h1 span {
   font-size: 0.8em;
   outline: none;
   border: 1px solid black;
-
 }
 
 .image-detail button:hover {

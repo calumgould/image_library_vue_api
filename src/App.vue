@@ -2,7 +2,7 @@
   <div id="app">
 
     <div class="banner">
-      <div class="sneaky-boi"></div>
+      <div @click="handleAddSeal" class="sneaky-boi"></div>
       <div class="sneaky-reveal"></div>
       <!-- <div :class="{sealHidden: scrollPosition < 150, sealVisible: scrollPosition > 150}"></div> -->
       <div class="seal" :style="{'opacity': this.opacity}"></div>
@@ -73,6 +73,17 @@ export default {
       this.page += 1
       location.reload();
       return false
+    },
+    handleAddSeal() {
+      let seal = {
+        author: "Clive Calum Seal-Päivänsalo",
+        download_url: "/images/awkwardseal.gif",
+        height: 371,
+        id: "9999",
+        url: "https://img2.thejournal.ie/inline/1422408/original/?width=580&version=1422408",
+        width: 580
+      }
+      this.images.unshift(seal)
     }
 
   }

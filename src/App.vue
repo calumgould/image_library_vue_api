@@ -180,6 +180,7 @@ export default {
     font-size: 0.8em;
     outline: none;
     border: 1px solid black;
+    font-size: 1rem;
   }
 
   .image-detail button:hover, .generate-images button:hover, .submit:hover {

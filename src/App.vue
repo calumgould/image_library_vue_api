@@ -100,7 +100,7 @@ export default {
   }
 
   h1 {
-    font-size: 6rem;
+    font-size: 6em;
     color: white;
     text-align: center;
     margin: 0 30%;
@@ -113,7 +113,7 @@ export default {
 
 
   .header img {
-    max-width: 25%;
+    max-width: 30%;
     z-index: 5;
   }
 

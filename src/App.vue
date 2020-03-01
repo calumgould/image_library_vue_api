@@ -20,7 +20,12 @@
       <image-grid :images="images" />
     </div>
     <div class="footer">
-      <a href="https://unsplash.com/" target="_blank"><img src="/images/Unsplash_Logo_Full.png" alt="Unsplash logo"></a>
+      <div class="dreamteam">
+        <svg width="260" height="45">
+          <text x="0" y="40" fill="none" stroke="black" stroke-width="1" font-size="50">dreamteam
+          </text>
+        </svg>
+      </div>
     </div>
   </div>
 </template>
@@ -77,147 +82,164 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  width: 100%;
-  text-align: center;
-}
+  #app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    width: 100%;
+    text-align: center;
+  }
 
-h1 {
-  font-size: 6rem;
-  color: white;
-  text-align: center;
-  margin: 0 30%;
-  font-family: 'Nunito'
-}
+  h1 {
+    font-size: 6rem;
+    color: white;
+    text-align: center;
+    margin: 0 30%;
+    font-family: 'Nunito'
+  }
 
-.header {
-  padding: 5% 0em;
-}
-
-
-.header img {
-  max-width: 25%;
-  z-index: 5;
-}
-
-/* .header h1:hover::after{
-  content: attr(data-hover);
-  font-family: 'Nunito';
-  font-size: 6rem;
-  padding: 1em 0em;
-  color: white;
-  text-align: center;
-} */
+  .header {
+    padding: 5% 0em;
+  }
 
 
-.banner {
-  background: rgb(247,255,0);
-  background: linear-gradient(90deg, rgba(247,255,0,1) 0%, rgba(219,54,164,1) 100%);
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 16.7%;
-  position: relative;
-  z-index: 1;
-}
+  .header img {
+    max-width: 25%;
+    z-index: 5;
+  }
 
-.sneaky-boi {
-  height: 20px;
-  width: 20px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+  /* .header h1:hover::after{
+    content: attr(data-hover);
+    font-family: 'Nunito';
+    font-size: 6rem;
+    padding: 1em 0em;
+    color: white;
+    text-align: center;
+  } */
 
-.sneaky-boi:hover {
-  cursor: url('/images/seal-cursor.png'), auto;
-}
 
-.sneaky-boi:hover ~ .sneaky-reveal {
-  opacity: 0.10;
-}
+  .banner {
+    background: rgb(247,255,0);
+    background: linear-gradient(90deg, rgba(247,255,0,1) 0%, rgba(219,54,164,1) 100%);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 16.7%;
+    position: relative;
+    z-index: 1;
+  }
 
-.seal, .sealHidden, .sealVisible, .sneaky-reveal {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: url(/images/awkwardseal.gif) center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0;
-  width: 100%;
-  height: 100%;
-}
+  .sneaky-boi {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 
-.sealVisible {
-  opacity: 0.15;
-}
+  .sneaky-boi:hover {
+    cursor: url('/images/seal-cursor.png'), auto;
+  }
 
-.image-detail {
-  padding: 2em 1em;
-  border-radius: 2em;
-  background-color: white;
-}
+  .sneaky-boi:hover ~ .sneaky-reveal {
+    opacity: 0.10;
+  }
 
-.image-detail p {
-  color: black;
-  padding-bottom: 0.5em;
-}
+  .seal, .sealHidden, .sealVisible, .sneaky-reveal {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url(/images/awkwardseal.gif) center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+  }
 
-.image-detail button, .generate-images button {
-  padding: 1em 2em;
-  margin-top: 0.5em;
-  border-radius: 2em;
-  font-size: 0.8em;
-  outline: none;
-  border: 1px solid black;
-}
+  .sealVisible {
+    opacity: 0.15;
+  }
 
-.image-detail button:hover, .generate-images button:hover, .submit:hover {
-  background: rgb(247,255,0);
-  background: linear-gradient(90deg, rgba(247,255,0,1) 0%, rgba(219,54,164,1) 80%);
-  border: 1px solid white;
-  color: white;
-  cursor: pointer;
-}
+  .image-detail {
+    padding: 2em 1em;
+    border-radius: 2em;
+    background-color: white;
+  }
 
-.generate-images button {
-  margin: 2em 1em 0 1em;
-  display: inline-block;
-}
+  .image-detail p {
+    color: black;
+    padding-bottom: 0.5em;
+  }
 
-.detail-border {
-  background: rgb(247,255,0);
-  background: linear-gradient(90deg, rgba(247,255,0,1) 0%, rgba(219,54,164,1) 100%);
-  margin: 2em 30% 2em 30%;
-  z-index: -1;
-  border-radius: 2em;
-  padding: 0.2em;
-  position: sticky;
-  top: 2%;
-  z-index: 1;
-}
+  .image-detail button, .generate-images button {
+    padding: 1em 2em;
+    margin-top: 0.5em;
+    border-radius: 2em;
+    font-size: 0.8em;
+    outline: none;
+    border: 1px solid black;
+  }
 
-.footer {
-  background: rgb(247,255,0);
-  background: linear-gradient(90deg, rgba(247,255,0,1) 0%, rgba(219,54,164,1) 100%);
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
+  .image-detail button:hover, .generate-images button:hover, .submit:hover {
+    background: rgb(247,255,0);
+    background: linear-gradient(90deg, rgba(247,255,0,1) 0%, rgba(219,54,164,1) 80%);
+    border: 1px solid white;
+    color: white;
+    cursor: pointer;
+  }
 
-.footer img {
-  margin: 0 30%;
-  width: 10em;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 3em 0 2em 0;
-}
+  .generate-images button {
+    margin: 2em 1em 0 1em;
+    display: inline-block;
+  }
+
+  .detail-border {
+    background: rgb(247,255,0);
+    background: linear-gradient(90deg, rgba(247,255,0,1) 0%, rgba(219,54,164,1) 100%);
+    margin: 2em 30% 2em 30%;
+    z-index: -1;
+    border-radius: 2em;
+    padding: 0.2em;
+    position: sticky;
+    top: 2%;
+    z-index: 1;
+  }
+
+  .footer {
+    background: rgb(247,255,0);
+    background: linear-gradient(90deg, rgba(247,255,0,1) 0%, rgba(219,54,164,1) 100%);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .footer img {
+
+  }
+
+  .dreamteam {
+    margin: 0 30%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3em 0 2em 0;
+    display: inline-block;
+  }
+
+  text {
+    font-family: 'Nunito', sans-serif;
+    stroke-dasharray: 100%;
+    stroke-dashoffset: 100%;
+
+    animation: draw 8s ease 0s infinite forwards;
+  }
+  @keyframes draw {
+    100% {
+      stroke-dashoffset: 0;
+    }
+  }
 
 
 </style>

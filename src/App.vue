@@ -127,7 +127,11 @@ h1 {
   width: 20px;
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
+}
+
+.sneaky-boi:hover {
+  cursor: url('/images/seal-cursor.png'), auto;
 }
 
 .sneaky-boi:hover ~ .sneaky-reveal {
@@ -193,6 +197,9 @@ h1 {
   z-index: -1;
   border-radius: 2em;
   padding: 0.2em;
+  position: sticky;
+  top: 2%;
+  z-index: 1;
 }
 
 .footer {

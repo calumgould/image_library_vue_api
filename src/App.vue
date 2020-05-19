@@ -12,6 +12,7 @@
     </div>
     <div class="generate-images">
       <button type="submit" @click="handlePageChange">Generate New Images</button>
+      <button type="submit" @click="handleLimitChange">+10</button>
     </div>
     <div class="image-grid">
       <div class="detail-border">
@@ -22,7 +23,7 @@
     <div class="footer">
       <div class="dreamteam">
         <svg width="260" height="45">
-          <text x="0" y="40" fill="none" stroke="black" stroke-width="1" font-size="50">dreamteam
+          <text x="0" y="40" fill="none" stroke="white" stroke-width="5" font-size="50">dreamteam
           </text>
         </svg>
       </div>
@@ -51,7 +52,7 @@ export default {
     'image-detail': ImageDetail,
   },
   mounted(){
-    fetch(`https://picsum.photos/v2/list?page=${this.page}&limit=${this.amount}`)
+    fetch(`https://picsum.photos/v2/list?page=${this.page}&limit=${this.limit}`)
     .then(response => response.json())
     .then(data => this.images = data)
 
@@ -71,8 +72,15 @@ export default {
     },
     handlePageChange() {
       this.page += 1
-      location.reload();
-      return false
+      fetch(`https://picsum.photos/v2/list?page=${this.page}&limit=${this.limit}`)
+      .then(response => response.json())
+      .then(data => this.images = data)
+    },
+    handleLimitChange() {
+      this.limit += 10
+      fetch(`https://picsum.photos/v2/list?page=${this.page}&limit=${this.limit}`)
+      .then(response => response.json())
+      .then(data => this.images = data)
     },
     handleAddSeal() {
       let seal = {

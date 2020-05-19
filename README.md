@@ -1,6 +1,6 @@
 # imgSpend.
 
-ImgSpend is a web-app that fetches and displays random images from the Unsplash image API.
+imgSpend. is a web-app that fetches and displays random images from the Unsplash image API.
 
 ## Setup
 
